@@ -8,7 +8,7 @@ class cam:
     camera = PiCamera()
     i = 1
     active = False
-    led = LED(16)
+    led = LED(19)
 
 def TakePhoto(cmr):
     if not (cmr.active):
@@ -24,7 +24,7 @@ def TakePhoto(cmr):
 
         cmr.camera.exif_tags['EXIF.SubSecTime'] = f"{tm}"
 
-        cmr.camera.capture(f"/home/pi/RaceSpyPhotos/testclick-{cmr.i}.jpg")
+        cmr.camera.capture(f"/DeadDrop/image-{cmr.i}.jpg")
         
         cmr.i += 1
         print(f"Photo taken at {datetime.datetime.now()}!")
@@ -38,7 +38,7 @@ def main():
     cmr = cam()
     cmr.active = False
     cmr.camera.resolution = (3280, 2464)
-    cmr.camera.shutter_speed = 200
+    cmr.camera.shutter_speed = 400
     cmr.led.on()
 
     pwrLed = LED(14)
